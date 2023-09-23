@@ -38,22 +38,6 @@
 <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
 <meta name="theme-color" content="#7952b3">
 
-<style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-</style>
-
 </head>
 
 <body>
@@ -63,7 +47,7 @@
             <a class="navbar-brand d-flex align-items-center">
                 <div class="row">
                     <div class="col">
-                        <strong>SISTEM INFORMASI PETERNAKAN</strong>
+                        <strong>SISTEM INFORMASI PAKAN TERNAK</strong>
                     </div>
                 </div>
             </a>
@@ -80,20 +64,30 @@
             <div class="card">
               <div class="card-body">
                 <main class="form-signin">
-                  <form action="#proses-login" method="post">
+                  {{-- alert start --}}
+                  @if ($errors->any())
+                    <div class="alert alert-danger">
+                      <ul>
+                        @foreach ($errors->all() as $item)
+                            <li>{{ $item }}</li>
+                        @endforeach
+                      </ul>
+                    </div>
+                  @endif
+                  {{-- alert end --}}
+                  <form action="/" method="post">
                     @csrf
                       <div class="text-center">
-                          <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+                          <h1 class="h3 mb-3 fw-normal">Silahkan LOGIN</h1>
                       </div>
-                  
                       <div class="form-floating">
-                          <label for="floatingInput">Username</label>
-                          <input autofocus type="text" name="username" class="form-control" placeholder="Username" autofocus required>
+                          <label for="floatingInput">Email</label>
+                          <input autofocus type="email" value="{{ old('email') }}" name="email" class="form-control" placeholder="Email" autofocus>
                       </div>
         
                       <div class="form-floating">
                           <label for="floatingPassword">Password</label>
-                          <input type="password" name="password" class="form-control" placeholder="Password" required>
+                          <input type="password" name="password" class="form-control" placeholder="Password">
                       </div>
                       <button class="w-100 btn btn-lg btn-dark" type="submit">Sign in</button>
                   </form>

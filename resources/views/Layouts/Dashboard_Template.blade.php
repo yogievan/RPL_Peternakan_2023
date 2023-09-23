@@ -19,15 +19,27 @@
   <link href="/assets/vendor/nucleo/css/nucleo-icons.css" rel="stylesheet">
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <!-- CSS Files -->
   <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
-</head>
+  <link href="/assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/fontawesome.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
+  
+  <Style>
+    .profilUser_img{
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+    }
+  </Style>
+
+</head>
 <body>
   <div class="wrapper ">
     <div class="sidebar" data-color="white" data-active-color="danger">
@@ -51,38 +63,38 @@
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
         <div class="container-fluid">
-          <div class="navbar-wrapper">
-            <div class="navbar-toggle">
-              <button type="button" class="navbar-toggler">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-              </button>
+          <h3>
+            @yield('pages_title', 'TANPA PAGES TITLE')
+          </h3>
+          <div class="d-flex">
+            <div class="m-auto">
+                @php
+                    $name = Auth::user()->name
+                @endphp
+                <p class="font-weight-bold">{{ $name }}</p>
             </div>
-            <a class="navbar-brand" href="javascript:;"><b>@yield('pages_title', 'TANPA PAGES TITLE')</b></a>
-          </div>
-          <div>
-            <div class="row">
-              <div class="col">
-                User
-              </div>
-              <div class="col text-center">
-                <a href="#logout"><button class="btn btn-danger">LOGOUT</button></a>
-              </div>
+            <div class="ml-5">
+                <img class="border" width="50px" src="../assets/img/default-avatar.png" alt="user">
             </div>
-          </div>
+            <div class="ml-5">
+                <a href="/logout">
+                    <button class="btn btn-outline-danger">
+                        LOGOUT
+                    </button>
+                </a>
+            </div>
+        </div>
         </div>
       </nav>
       <!-- End Navbar -->
-
-      <!-- konten -->
-      @yield('contents')
-      <!-- konten -->
-
-      <!-- Footer -->
-      @include('Layouts.Footer')
-      <!-- Footer -->
     </div>
+    <!-- konten -->
+    @yield('contents')
+    <!-- konten -->
+
+    <!-- Footer -->
+    {{-- @include('Layouts.Footer') --}}
+    <!-- Footer -->
   </div>
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
