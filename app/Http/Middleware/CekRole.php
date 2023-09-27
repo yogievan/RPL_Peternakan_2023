@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class CekRole
 {
@@ -19,6 +20,6 @@ class CekRole
         if (auth()->user()->role == $role){
             return $next($request);
         }
-        return redirect('/dashboard');
+        return Redirect::back();
     }
 }

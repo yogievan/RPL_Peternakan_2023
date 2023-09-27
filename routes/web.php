@@ -14,9 +14,9 @@ Route::middleware(['guest'])->group(function(){
     Route::get('/', [authController::class, 'login'])->name('login');
     Route::post('/', [authController::class, 'validateLogin']);
 });
-Route::get('/home', function () {
-    return redirect('/logout');
-});
+// Route::get('/home', function () {
+//     return redirect('/logout');
+// });
 
 Route::middleware(['auth'])->group(function(){
     // dashboard
